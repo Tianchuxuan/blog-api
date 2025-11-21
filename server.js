@@ -52,7 +52,7 @@ if (!MONGO_URI) {
 }
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGODB_URI)
   .then(() => {
     console.log('MongoDB connected');
     app.listen(PORT, () => {
