@@ -44,10 +44,10 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGO_URI) {
-  console.error('MONGO_URI is not defined in environment variables');
+  console.error('MONGODB_URI is not defined in environment variables');
   process.exit(1);
 }
 
