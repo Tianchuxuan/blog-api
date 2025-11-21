@@ -1,0 +1,97 @@
+Capstone Project: The Portfolio & Blog API
+Course: Web Data Management and Application – The Back-End Engine
+Project Type: Cumulative Capstone Project
+Total Marks: 100
+1. Project Overview
+This capstone project is the culmination of your learning in this course. Your task is to design, build, test, and deploy a secure, robust, and scalable RESTful API.
+This API will serve as the "brain" for your Personal Portfolio front-end. Its primary role is to manage your portfolio content, such as your projects, skills, and incoming contact messages. As an additional feature, you will also build a full-featured Blog API, complete with user management and comments, which can be integrated into your portfolio.
+You will implement all logic using Node.js and the Express framework, manage your data with a MongoDB Atlas database (using Mongoose for modeling), and implement a full user authentication and authorization system using JSON Web Tokens (JWT).
+The final deliverable will be a complete, production-ready API deployed to a live, publicly accessible URL, ready to be consumed by your front-end portfolio project.
+2. Core Learning Objectives
+This project is designed to assess your ability to:
+●Design and build a scalable RESTful API with Node.js and Express.
+●Structure a back-end application using the MVC (Model-View-Controller) pattern.
+●Model and validate data using Mongoose schemas.
+●Connect to and perform all CRUD (Create, Read, Update, Delete) operations on a live MongoDB database.
+●Implement secure password hashing using bcrypt.
+●Build a complete user authentication system using JWT.
+●Create authorization middleware to protect routes.
+●Implement data relationships between models (e.g., Users, Posts, Comments).
+●Deploy a production-ready Node.js application to a cloud platform.
+3. Project Requirements & Features
+Your submitted API must meet the following functional requirements. You must test all endpoints thoroughly using a tool like Postman or Thunder Client.
+Phase 1: Models & Core Structure
+●MVC Structure: Your application must be organized into models, routes, and controllers folders.
+●Database: You must use a cloud-hosted MongoDB Atlas database.
+●Mongoose Models: You must create the following Mongoose schemas with validation:
+○User Model: (For Admin/Blog Authors)
+■username (String, required, unique)
+■email (String, required, unique)
+■password (String, required, minlength 6)
+○Project Model: (For your portfolio projects)
+■title (String, required)
+■description (String, required)
+■imageUrl (String, optional)
+■repoUrl (String, optional)
+■liveUrl (String, optional)
+■user (Mongoose ObjectId, ref: 'User', required)
+○BlogPost Model: (For the blog add-on)
+■title (String, required)
+■content (String, required)
+■author (Mongoose ObjectId, ref: 'User', required)
+■timestamps (auto-generated)
+○Comment Model: (For the blog)
+■body (String, required)
+■author (Mongoose ObjectId, ref: 'User', required)
+■post (Mongoose ObjectId, ref: 'BlogPost', required)
+■timestamps (auto-generated)
+○Message Model: (For the portfolio contact form)
+■name (String, required)
+■email (String, required)
+■message (String, required)
+■timestamps (auto-generated)
+Phase 2: Authentication & User Endpoints
+●Password Hashing: You must use bcrypt to hash passwords upon registration and compare them upon login.
+●JWT Generation: You must generate a JWT upon successful login, containing the user's ID.
+●Authentication Endpoints:
+○POST /api/users/register: Creates a new user (with hashed password).
+○POST /api/users/login: Authenticates a user and returns a JWT.
+Phase 3: Authorization & Protected Routes
+●Auth Middleware: You must create a protect middleware function that verifies the JWT from the Authorization header and attaches the user to the req object.
+●Authorization Logic: You must ensure that only the original author of a BlogPost can update or delete that post. (Project management is assumed to be admin-only).
+Phase 4: Public & Protected API Endpoints
+●Portfolio: Project Endpoints
+○GET /api/projects: (Public) Returns all projects.
+○GET /api/projects/:id: (Public) Returns a single project.
+○POST /api/projects: (Protected) Creates a new project, associating it with the logged-in req.user.
+○PUT /api/projects/:id: (Protected) Updates a project.
+○DELETE /api/projects/:id: (Protected) Deletes a project.
+●Portfolio: Contact Endpoint
+○POST /api/contact: (Public) Receives data from the portfolio contact form and saves it as a new Message document in the database.
+●Blog: Blog Post Endpoints
+○GET /api/blog: (Public) Returns all blog posts, populated with the author's username.
+○GET /api/blog/:id: (Public) Returns a single post, populated with author username and all associated comments.
+○POST /api/blog: (Protected) Creates a new blog post, associating it with the logged-in req.user.
+○PUT /api/blog/:id: (Protected & Authorized) Updates a blog post, only if req.user is the author.
+○DELETE /api/blog/:id: (Protected & Authorized) Deletes a blog post, only if req.user is the author.
+●Blog: Comment Endpoints
+○GET /api/blog/:postId/comments: (Public) Returns all comments for a specific blog post.
+○POST /api/blog/:postId/comments: (Protected) Creates a new comment associated with the post and the logged-in user.
+Phase 5: Security & Deployment
+●Error Handling: You must implement a central error handling middleware to send consistent JSON error responses.
+●Security: You must use helmet for secure headers and dotenv to hide all secrets (DB connection string, JWT secret).
+●Deployment: The final API must be deployed to a live, publicly accessible URL (e.g., Render, Heroku).
+4. Grading Rubric (100 Marks)
+Category	Description	Marks
+1. Database & Models	Correct Mongoose schemas (User, Project, BlogPost, Comment, Message), validation, and connection to MongoDB Atlas.	20
+2. Auth & Authorization	User registration, login, password hashing, JWT, and protect middleware work correctly.	25
+3. CRUD Endpoints	All Project and BlogPost endpoints (public and protected) function as specified. Blog authorization logic is correct.	20
+4. Relationships & Features	Comment (on Blog) and Contact (on Portfolio) endpoints function. populate() is used correctly.	15
+5. Structure & Error Handling	Code is clean, follows MVC pattern, and includes robust central error handling.	10
+6. Security & Deployment	helmet and dotenv are used. API is successfully deployed to a live URL and is operational.	10
+Total		100
+5. Submission Requirements
+To submit your project, you must provide:
+1.A Live API URL: A link to your deployed, final back-end API.
+2.A Source Code Link: A link to your source code repository (e.g., GitHub).
+3.A README.md File: Your repository must include a README.md file that lists all available API endpoints, their purpose, and what data (body/params) they expect.

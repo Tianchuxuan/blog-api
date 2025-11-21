@@ -1,0 +1,79 @@
+Capstone Project: The Full-Stack Portfolio SPA
+Course: Web Programming – Building the Modern User Interface
+Project Type: Cumulative Full-Stack Capstone Project
+Total Marks: 100
+1. Project Overview
+This capstone project is the culmination of your learning in this course. Your task is to build and deploy a complete, Full-Stack Personal Portfolio Website.
+You will build the front-end application using React. This application will serve as the user interface for the Portfolio & Blog API you developed in the "Web Data Management and Application" course. You will be responsible for building every client-side component, managing application state, creating a multi-page user experience with React Router, and implementing a full authentication flow.
+Your React app will consume all of your API's endpoints. This includes fetching your Projects data for your gallery, displaying Blog Posts, receiving messages via your Contact form, and providing a secure, protected Admin Dashboard where you can log in to create, update, and delete your portfolio and blog content.
+2. Core Learning Objectives
+This project is designed to assess your ability to:
+●Build a complex, component-based application using React.
+●Design and implement visually appealing, responsive layouts.
+●Create a multi-page user experience using React Router, including protected routes.
+●Integrate a React front-end with a live Node.js back-end API.
+●Implement a full authentication flow (register, login, logout) on the client side.
+●Manage global application state, such as authentication, using the Context API.
+●Perform all client-side CRUD (Create, Read, Update, Delete) operations.
+●Deploy a production-ready web application to a live hosting service.
+3. Project Requirements & Features
+Your submitted project must meet the following requirements.
+Phase 1: React Application Architecture
+●Component-Based: Your UI must be broken down into logical, reusable components (e.g., Header, Footer, ProjectCard, BlogPostCard, AdminDashboard).
+●Props: You must use props to pass data effectively from parent to child components.
+●Modern Styling: You must use a modern React styling approach (e.g., Tailwind CSS, CSS Modules) to create a professional, responsive design.
+Phase 2: State, Interactivity & API Integration
+●State Management: You must use useState for all component-level state (e.g., form inputs, loading/error states).
+●API Integration (Read):
+○useEffect must be used to fetch data from your live back-end.
+○Projects Page (/projects): Must fetch from GET /api/projects.
+○Blog Page (/blog): Must fetch from GET /api/blog.
+○Blog Detail Page (/blog/:id): Must fetch from GET /api/blog/:id.
+○Conditional Rendering: You must display "Loading..." and "Error" messages where appropriate during API calls.
+●API Integration (Write):
+○Contact Page (/contact): Must feature a controlled form that POSTs data to POST /api/contact.
+○Login/Register Pages: Must feature controlled forms that POST to POST /api/users/login and POST /api/users/register.
+○Blog Detail Page (/blog/:id): Must allow a logged-in user to post a comment via POST /api/blog/:postId/comments.
+●Protected API Calls (Admin Dashboard):
+○All requests from the Admin Dashboard (POST, PUT, DELETE) must include the user's JWT in an Authorization: Bearer <token> header.
+Phase 3: Routing & Global State
+●Client-Side Routing: You must use React Router to create all required pages:
+○Public Routes:
+■/ (Home/About Me Page)
+■/projects (Projects Gallery Page)
+■/blog (Blog List Page)
+■/blog/:id (Blog Post Detail Page)
+■/contact (Contact Page)
+■/login (Login Page)
+■/register (Register Page)
+○Protected Route:
+■/admin (Admin Dashboard) - This route must be inaccessible unless a user is logged in.
+●Global State (Context API): You must use the Context API to manage Authentication State (e.g., storing the user's token, user data, and login/logout functions) and provide this state to the entire application.
+●Auth-Aware UI:
+○The Header component must be "auth-aware." It should conditionally display "Login" and "Register" links, or a "Logout" button and a link to the "Admin Dashboard" if the user is authenticated.
+Phase 4: Core Components & Pages
+●Header & Footer: A persistent Header and Footer for all pages.
+●Admin Dashboard (/admin):
+○This component must be a protected route.
+○It must provide a UI (e.g., forms, lists) to manage both Projects and Blog Posts.
+○Manage Projects: Must allow the admin to Create (POST /api/projects), Update (PUT /api/projects/:id), and Delete (DELETE /api/projects/:id) portfolio projects.
+○Manage Blog: Must allow the admin to Create (POST /api/blog), Update (PUT /api/blog/:id), and Delete (DELETE /api/blog/:id) blog posts.
+Phase 5: Deployment
+●Deployment: The final, built React application (npm run build) must be deployed to a live, publicly accessible URL (e.g., Vercel, Netlify).
+●Functionality: The deployed front-end must successfully and exclusively communicate with your deployed back-end API.
+4. Grading Rubric (100 Marks)
+Your project will be graded based on its full-stack functionality.
+Category	Description	Marks
+1. React Arch. & Design	Responsive design, modern styling, and logical, reusable React components.	20
+2. Routing	All public and dynamic routes work. /admin is a protected route that redirects if not logged in.	15
+3. API Integration (Public)	Pages correctly fetch data (/projects, /blog, /blog/:id). Contact form works.	20
+4. Auth Flow & Global State	Login/Register pages work. Auth Context correctly manages user state. Nav is auth-aware.	20
+5. API Integration (Protected)	Admin Dashboard can fully manage (Create, Update, Delete) both Projects and Blog Posts, sending the JWT correctly. Commenting works.	20
+6. Deployment	Deployed front-end successfully communicates with deployed back-end. Site is polished and bug-free.	5
+Total		100
+5. Submission Requirements
+To submit your project, you must provide:
+1.A Live FRONT-END URL: A link to your deployed, final portfolio website (e.g., on Vercel).
+2.A Live BACK-END URL: A link to your deployed, final API (e.g., on Render).
+3.A Source Code Link: A link to your front-end source code repository (e.g., GitHub).
+4.A README.md File: Your repository must include a README.md file that provides an overview, a link to both live sites, and instructions on how to run the project locally (including how to connect it to the back-end API).
